@@ -277,6 +277,9 @@
     setBgm: setBgm,
     sfx: sfx,
     setSfx: function (on) { enabled = on; },
-    isReady: function () { return !!ctx; }
+    isReady: function () { return !!ctx; },
+    debug: function () {
+      return { state: ctx ? ctx.state : 'none', mood: moodName, bgmGain: bgmBus ? bgmBus.gain.value : 0 };
+    }
   };
 })(window);

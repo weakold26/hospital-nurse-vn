@@ -778,6 +778,11 @@
     document.addEventListener('keydown', function (ev) {
       if (ev.key === 'Escape') { closeModal(); return; }
       if (modalOpen) return;
+      if (choiceOpen && /^[1-9]$/.test(ev.key)) {
+        var cbtns = document.querySelectorAll('#choices .choice');
+        var cb = cbtns[parseInt(ev.key, 10) - 1];
+        if (cb) { cb.click(); return; }
+      }
       if (document.body.classList.contains('is-title')) {
         if (ev.key === 'Enter') startNew();
         return;
