@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+<title>새벽 두 시, 3층 병동</title>
+<meta name="description" content="병동 실습 5일, 새벽을 함께 세는 두 간호사와의 이야기. 브라우저에서 바로 하는 비주얼 노벨.">
+<meta name="theme-color" content="#0d1820">
+<meta property="og:title" content="새벽 두 시, 3층 병동">
+<meta property="og:description" content="첫 당직, 첫 실수, 그리고 새벽 세 시의 복도. 5일간의 병동 로맨스 비주얼 노벨.">
+<meta property="og:type" content="website">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23eaf6f4'/%3E%3Cpath d='M50 26v48M26 50h48' stroke='%233fa593' stroke-width='13' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap">
+<link rel="stylesheet" href="css/style.css?v=1">
+</head>
+<body class="loading is-title">
+
+<div id="app">
+  <div id="stage">
+    <div class="bg-layer" aria-hidden="true">
+      <div class="bg" id="bgA"></div>
+      <div class="bg" id="bgB"></div>
+      <div class="bg-tint"></div>
+    </div>
+
+    <div class="char-layer" aria-hidden="true">
+      <img class="char" id="charA" alt="">
+      <img class="char" id="charB" alt="">
+    </div>
+
+    <div class="fx-layer" aria-hidden="true">
+      <div class="dust" id="dust"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <div id="chapter-card" aria-hidden="true"></div>
+
+    <div class="ui-layer">
+      <div id="hud">
+        <div id="chapter-chip">프롤로그</div>
+        <div class="affs">
+          <div class="aff" data-k="haram">
+            <span class="nm">하람</span>
+            <span class="bar"><i></i></span>
+            <span class="num">0</span>
+          </div>
+          <div class="aff" data-k="serin">
+            <span class="nm">세린</span>
+            <span class="bar"><i></i></span>
+            <span class="num">0</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="topbar">
+        <button id="btn-log" class="icon" type="button" aria-label="백로그">로그</button>
+        <button id="btn-auto" class="icon" type="button" aria-label="자동 진행">자동</button>
+        <button id="btn-skip" class="icon" type="button" aria-label="빠르게 넘기기">스킵</button>
+        <button id="btn-save" class="icon" type="button" aria-label="저장">저장</button>
+        <button id="btn-load" class="icon" type="button" aria-label="불러오기">불러오기</button>
+        <button id="btn-bgm" class="icon" type="button" aria-label="소리 끄기">♪</button>
+        <button id="btn-menu" class="icon" type="button" aria-label="설정">설정</button>
+      </div>
+
+      <div id="choices" role="group" aria-label="선택지"></div>
+
+      <div id="dialogue">
+        <div id="namebox"><span id="name"></span></div>
+        <div id="text"></div>
+        <span id="next-ind" aria-hidden="true">▼</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- title -->
+  <section id="title-screen">
+    <div class="title-bg"></div>
+    <div class="title-inner">
+      <p class="kicker">NIGHT ROUND · 03F</p>
+      <h1>새벽 두 시,<br><em>3층 병동</em></h1>
+      <p class="tagline">첫 당직, 첫 실수, 그리고 새벽 세 시의 복도.</p>
+      <div id="title-menu">
+        <button id="btn-start" class="btn" type="button">처음부터</button>
+        <button id="btn-continue" class="btn ghost" type="button">이어서 하기</button>
+        <button id="btn-gallery" class="btn ghost" type="button">
+          엔딩 도감 <span class="sub" id="gallery-count">0 / 5</span>
+        </button>
+        <button id="title-sound" class="link" type="button">소리 · 켜짐</button>
+      </div>
+      <div class="loader"><div id="loader-bar"></div></div>
+      <p class="credit">A VISUAL NOVEL · 2026</p>
+    </div>
+  </section>
+
+  <!-- ending -->
+  <section id="ending-screen" aria-live="polite"></section>
+
+  <!-- modal -->
+  <div id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3 id="modal-title">저장</h3>
+        <button id="modal-close" type="button" aria-label="닫기">✕</button>
+      </div>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+</div>
+
+<script src="js/audio.js?v=1"></script>
+<script src="js/engine.js?v=1"></script>
+</body>
+</html>
