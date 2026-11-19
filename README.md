@@ -48,7 +48,7 @@ index.html              무대 · 타이틀 · 모달 마크업
 css/style.css           4레이어 무대, 대사창, 선택지, 반응형
 js/engine.js            엔진: 타자기·분기·호감도·세이브·자동·스킵
 js/audio.js             WebAudio 로 만드는 배경음과 효과음 (외부 음원 없음)
-src/data/scenario.json  시나리오 404개 대사 노드 · 선택지 14개 · 엔딩 5종
+src/data/scenario.json  시나리오 405개 대사 노드 · 선택지 14개 · 엔딩 5종
 assets/img/             배경 4종 · 캐릭터 스탠딩 8종 (WebP)
 tools/                  시나리오 빌더 · 전수 시뮬레이터 · 자산 빌더 · 모바일 미리보기
 ```
