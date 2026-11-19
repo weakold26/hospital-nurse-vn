@@ -3,8 +3,9 @@
 
 
 def build(S):
-    S.line(bg="ward_day", ch="4일차 · 마지막 라운드", bgm="day", hide=True,
-           text="마지막 날. 실습 수첩은 절반이 넘게 찼고, 손글씨가 조금 달라져 있었다.")
+    S.line(bg="ward_day", ch="5일차 · 마지막 라운드", bgm="day", hide=True,
+           text="4일차는 유난히 조용히 지나갔다. 인수인계, 드레싱, 퇴원 서류. 그런 것들로만 채워진 하루였다.")
+    S.line(text="그리고 마지막 날. 실습 수첩은 절반이 넘게 찼고, 손글씨가 조금 달라져 있었다.")
     S.line(who="정하람", e="base", show={"id": "haram", "expr": "base"},
            text="3호실 환자분, 오늘 퇴원이에요. 선생님이 퇴원 설명 해 보세요. 제가 옆에 있을게요.")
     S.line(who="나", text="…제가요?")
@@ -25,7 +26,7 @@ def build(S):
     S.line(who="정하람", text="세린아. 퇴근하고 와. 야식은 그때 사 와.")
     S.line(who="오세린", e="base", text="언니가 그런 말 하면 진짜 와요. 알았어요, 올게요!")
 
-    S.line(bg="rooftop_dusk", ch="마지막 저녁 · 옥상", bgm="warm", hide=True,
+    S.line(bg="rooftop_dusk", ch="5일차 · 마지막 저녁", bgm="warm", hide=True,
            text="마지막 저녁. 옥상. 해가 지고, 도시에 불이 하나씩 켜지기 시작했다.")
     S.line(show={"id": "haram", "expr": "base"}, who="정하람", text="5일이 이렇게 짧아요? 원래 병동은 이렇게 안 짧은데.")
     S.line(who="나", text="…저는 길었어요. 진짜로.")
