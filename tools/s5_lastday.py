@@ -32,7 +32,7 @@ def build(S):
     S.line(who="나", text="…저는 길었어요. 진짜로.")
     S.line(who="정하람", text="길었으면 잘 배운 거예요.")
     S.line(text="세린이 늦게 도착했다. 봉투를 들고, 계단을 세 칸씩. 숨이 차서 말도 제대로 못 했다.")
-    S.line(show={"id": "serin", "expr": "base"}, who="오세린", text="야식! 이번엔 김밥이랑… 어, 뭐지. 이거. 아무튼 맛있는 거예요.")
+    S.line(show2={"id": "serin", "expr": "base"}, who="오세린", text="야식! 이번엔 김밥이랑… 어, 뭐지. 이거. 아무튼 맛있는 거예요.")
     S.line(text="세 사람이 의자 두 개에 나눠 앉았다. 하람 씨가 가운데, 내가 오른쪽, 세린이 왼쪽.")
     S.line(text="해가 완전히 졌다. 도시 불빛이 하늘 대신 아래에서 켜졌다.")
 
@@ -86,7 +86,7 @@ def build(S):
 
     # ================= 세린 루트 =================
     S.label("f_serin")
-    S.line(show={"id": "serin", "expr": "base"}, who="나",
+    S.line(show={"id": "serin", "expr": "base"}, show2={"id": "haram", "expr": "base"}, who="나",
            text="세린아. 나 계속 생각했어. 5층까지 안 올라와도 되는 날에도, 네가 올라올 것 같아서.")
     S.line(who="오세린", e="surprised", text="…네? 그게 무슨.")
     S.line(who="나", text="올라와 줬으면 좋겠어. 계속. 매일 밤.")

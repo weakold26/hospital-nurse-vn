@@ -51,7 +51,7 @@ def build(S):
 
     # 세린 등장
     S.line(bg="ward_day", fx="none", text="그때, 복도 저편에서 누군가 계단을 두 칸씩 뛰어 올라왔다.")
-    S.line(show={"id": "serin", "expr": "base"}, who="오세린",
+    S.line(show2={"id": "serin", "expr": "base"}, who="오세린",
            text="하람 언니! 3호실 환자분 올라왔어요! 응급실에서요!")
     S.line(who="오세린", text="아, 그리고 이거. 어제 언니가 커피 사 준다 했잖아요. 안 사 주면 제가 사 올게요.")
     S.line(who="정하람", e="base", text="세린아. 환자 인계부터. 커피는 그다음.")
@@ -91,7 +91,7 @@ def build(S):
 
     S.label("p_serin_end")
     S.line(who="오세린", text="그럼 저 내려갈게요! 3호실 환자분, 수술 이틀째고 통증 조절 중이에요. 자세한 건 차트에.")
-    S.line(hide=True, text="세린이 계단으로 사라졌다. 발소리가 두 층을 내려가서야 잦아들었다.")
+    S.line(hide2=True, text="세린이 계단으로 사라졌다. 발소리가 두 층을 내려가서야 잦아들었다.")
     S.line(who="정하람", e="base", text="저 애, 응급실에서 제일 젊어요. 그래서 제일 많이 뛰어요.")
     S.line(who="정하람", text="…많이 뛰다가 넘어지기도 하고.")
     S.line(text="그 말에는 여러 겹이 있다. 무슨 겹인지는 아직 모르겠다.")

@@ -60,11 +60,11 @@ def build(S):
     S.goto("d2_serin")
 
     S.label("d2_serin")
-    S.line(show={"id": "serin", "expr": "serious"}, who="오세린", text="…언니. 선생님.")
+    S.line(show2={"id": "serin", "expr": "serious"}, who="오세린", text="…언니. 선생님.")
     S.line(text="문가에 세린이 서 있었다. 언제부터 있었는지 모른다. 눈이 조금 젖어 있었다.")
     S.line(who="오세린", e="serious", text="저, 잠깐만 있어도 돼요?")
     S.line(who="정하람", text="들어와. 여기 앉아.")
-    S.line(hide=True, text="세린이 의자에 앉자, 하람 씨가 내 자리를 비켜 주고 뒤로 물러섰다. 오늘은 세린 차례인 것 같았다.")
+    S.line(show={"id": "serin", "expr": "serious"}, show2={"id": "haram", "expr": "base"}, text="세린이 의자에 앉자, 하람 씨가 내 자리를 비켜 주고 뒤로 물러섰다. 오늘은 세린 차례인 것 같았다.")
     S.line(who="오세린", e="serious", text="저 오늘 응급실에서 혼났어요. 환자분한테 \"괜찮아요\"만 세 번 말했대요. 아무것도 안 하고.")
     S.line(who="오세린", text="근데 저 진짜 열심히 했거든요. 손이 떨려서 그런 거였는데. 그게 말이 안 되잖아요.")
     S.line(text="제일 밝은 사람이 우는 건, 익숙하지가 않다.")

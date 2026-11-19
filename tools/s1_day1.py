@@ -15,7 +15,7 @@ def build(S):
     S.line(text="잠깐의 정적. 옆 침상에서 손을 들던 보호자가 나를 봤다.")
     S.line(who="보호자", hide=True, text="아니, 저희 어머니는 저쪽인데요.")
     S.line(text="얼굴이 확 달아올랐다. 이름표 두 개가 나란히 붙어 있었고, 나는 왼쪽 걸 읽고 오른쪽 환자에게 말을 걸었다.")
-    S.line(who="정하람", e="serious", text="잠깐.")
+    S.line(who="정하람", e="serious", show={"id": "haram", "expr": "serious"}, text="잠깐.")
     S.line(who="정하람", text="죄송합니다, 어머님. 저희가 자리를 바꿔서 헷갈렸어요. 제가 다시 확인하고 올게요.")
     S.line(text="그녀가 자연스럽게 그 자리를 가져갔다. 사과도, 변명도 내 몫이 아니게 만들어 버렸다.")
     S.line(hide=True, text="커튼 밖. 하람 씨가 나를 보고 섰다. 무섭게가 아니라, 아주 정확하게.")
@@ -93,7 +93,7 @@ def build(S):
     S.line(who="나", text="하지 마.")
     S.line(who="오세린", text="늦었어요. 벌써 적었어요.")
 
-    S.line(bg="ward_night", ch="1일차 · 첫 당직", bgm="night",
+    S.line(bg="ward_night", ch="1일차 · 첫 당직", bgm="night", show={"id": "haram", "expr": "base"}, hide2=True,
            text="저녁 7시. 낮 근무자들이 하나둘 돌아가고, 복도 불빛이 한 단계 내려앉았다.")
     S.line(who="정하람", e="base", text="당직은 두 명이에요. 저, 그리고 선생님. 응급실에서 세린이 지원 나오고요.")
     S.line(who="정하람", text="밤에는 결정을 빨리 해야 할 때가 있어요. 그런데 그 전에, 결정을 누구에게 물을지부터 정하는 거예요.")

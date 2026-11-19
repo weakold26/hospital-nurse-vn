@@ -23,7 +23,7 @@ class Scene:
     # ---- primitives -------------------------------------------------
     def line(self, text=None, who=None, e=None, bg=None, ch=None, show=None,
              hide=False, bgm=None, weather=None, fx=None, eff=None,
-             ending=None, text_speed=None, choices=None):
+             ending=None, text_speed=None, choices=None, show2=None, hide2=False):
         nid = "n%03d" % (len(self.nodes) + 1)
         node = {}
         if who:
@@ -40,6 +40,10 @@ class Scene:
             node["show"] = show
         if hide:
             node["hide"] = True
+        if show2:
+            node["show2"] = show2
+        if hide2:
+            node["hide2"] = True
         if bgm:
             node["bgm"] = bgm
         if weather:

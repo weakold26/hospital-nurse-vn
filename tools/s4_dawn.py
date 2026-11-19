@@ -60,7 +60,7 @@ def build(S):
     S.line(text="칭찬과 채찍이 한 문장 안에 있었다. 그게 이 사람의 방식이다.")
 
     S.line(bg="ward_night", text="새벽 3시. 처치가 끝나고, 3호실 불이 다시 꺼졌다. 보호자 없이 혼자 온 환자라, 하람 씨가 의자를 침상 옆으로 옮겨 놓았다.")
-    S.line(who="오세린", e="base", show={"id": "serin", "expr": "base"},
+    S.line(who="오세린", e="base", show2={"id": "serin", "expr": "base"},
            text="선생님. 손 아직 떨려요?")
     S.line(who="나", text="…조금.")
     S.line(who="오세린", text="저도요. 이거 마시면 좀 나아요. 2층 자판기 코코아인데, 오늘은 좀 진해요. 제가 진하게 눌렀거든요.")
@@ -99,7 +99,7 @@ def build(S):
     S.goto("d3_end")
 
     S.label("d3_end")
-    S.line(hide=True, text="새벽 4시 반. 세린이 아래층으로 내려갔다. 복도 창가에 하람 씨가 또 서 있었다. 오늘은 내가 먼저 갔다.")
+    S.line(hide2=True, show={"id": "haram", "expr": "base"}, text="새벽 4시 반. 세린이 아래층으로 내려갔다. 복도 창가에 하람 씨가 또 서 있었다. 오늘은 내가 먼저 갔다.")
     S.line(who="정하람", e="base", show={"id": "haram", "expr": "base"}, text="안 자요?")
     S.line(who="나", text="선배님도요.")
     S.line(who="정하람", text="나는 이제 습관이에요. 자면 누가 바꿔 주나.")

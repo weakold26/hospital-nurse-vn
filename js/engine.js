@@ -42,7 +42,6 @@
   var typingTimer = null, fullText = '', charIndex = 0, afterTyping = null;
   var choiceOpen = false, modalOpen = false, ended = false;
   var bgFront = 'A', charFront = 'A';
-  var currentChar = null;
   var settings = { sound: true, bgm: true, speed: 24 };
   var autoTimer = null, autoOn = false, skipOn = false;
 
@@ -184,7 +183,6 @@
     history = [];
     state = newState();
     ended = false;
-    currentChar = null;
     hideChar(true);
     updateHud();
     goNode(meta.start);
@@ -226,32 +224,79 @@
     bgFront = bgFront === 'A' ? 'B' : 'A';
   }
 
-  function showChar(id, expr) {
-    expr = expr || 'base';
+  var chars = { main: null, side: null };
+
+  function setChar(slot, id, expr) {
     var set = ASSETS.char[id];
     if (!set) return;
-    var src = set[expr] || set.base;
-    currentChar = { id: id, expr: set[expr] ? expr : 'base' };
-    var frontEl = $(charFront === 'A' ? 'charA' : 'charB');
-    if (frontEl.getAttribute('src') === src && frontEl.classList.contains('on')) return;
-    var backEl = $(charFront === 'A' ? 'charB' : 'charA');
-    backEl.src = src;
-    backEl.alt = (meta.heroines[id] ? meta.heroines[id].name : '');
-    backEl.dataset.who = id;
-    backEl.classList.add('on');
-    frontEl.classList.remove('on');
-    charFront = charFront === 'A' ? 'B' : 'A';
-    $('stage').classList.add('has-char');
+    var use = set[expr] ? expr : 'base';
+    var el = slot === 'main' ? $('charMain') : $('charSide');
+    chars[slot] = { id: id, expr: use };
+    if (el.getAttribute('src') !== set[use]) {
+      el.src = set[use];
+      el.alt = meta.heroines[id] ? meta.heroines[id].name : '';
+      el.dataset.who = id;
+      el.classList.add('on');
+    }
+    if (!el.classList.contains('on')) el.classList.add('on');
+    syncLayer();
+  }
+
+  function clearChar(slot) {
+    var el = slot === 'main' ? $('charMain') : $('charSide');
+    chars[slot] = null;
+    el.classList.remove('on');
+    el.classList.remove('dim');
+    syncLayer();
+  }
+
+  function syncLayer() {
+    var layer = $('char-layer');
+    if (!layer) return;
+    var both = !!(chars.main && chars.side);
+    layer.classList.toggle('two', both);
+    $('stage').classList.toggle('has-char', !!(chars.main || chars.side));
+  }
+
+  function markSpeaker(spk) {
+    [['main', $('charMain')], ['side', $('charSide')]].forEach(function (pair) {
+      var slot = chars[pair[0]];
+      if (!slot) return;
+      pair[1].classList.toggle('dim', !!spk && slot.id !== spk);
+    });
+  }
+
+  /* 노드의 캐릭터 지시를 적용한다. 화자가 무대에 없으면 주역으로 세운다. */
+  function applyChars(n, spk) {
+    if (n.hide) { clearChar('main'); clearChar('side'); }
+    if (n.hide2) clearChar('side');
+    if (n.show) {
+      if (chars.side && chars.side.id === n.show.id) clearChar('side');
+      setChar('main', n.show.id, n.show.expr);
+    }
+    if (n.show2 && !(chars.main && chars.main.id === n.show2.id)) {
+      setChar('side', n.show2.id, n.show2.expr);
+    }
+
+    if (spk && n.e) {
+      if (chars.main && chars.main.id === spk) setChar('main', spk, n.e);
+      else if (chars.side && chars.side.id === spk) setChar('side', spk, n.e);
+    }
+    if (spk && !(chars.main && chars.main.id === spk) && !(chars.side && chars.side.id === spk)) {
+      setChar('main', spk, n.e || 'base');
+    }
+    markSpeaker(spk);
   }
 
   function hideChar(instant) {
-    ['charA', 'charB'].forEach(function (id) {
+    ['charMain', 'charSide'].forEach(function (id) {
       var el = $(id);
       el.classList.remove('on');
-      if (instant) { el.removeAttribute('src'); }
+      el.classList.remove('dim');
+      if (instant) el.removeAttribute('src');
     });
-    currentChar = null;
-    $('stage').classList.remove('has-char');
+    chars = { main: null, side: null };
+    syncLayer();
   }
 
   function showChapterCard(text) {
@@ -285,7 +330,11 @@
         if (n.bg) setBg(n.bg);
         if (n.bgm) VNAudio.setMood(n.bgm);
         if (n.hide) hideChar();
-        else if (n.show) showChar(n.show.id, n.show.expr);
+        else {
+          if (n.hide2) clearChar('side');
+          if (n.show) setChar('main', n.show.id, n.show.expr);
+          if (n.show2) setChar('side', n.show2.id, n.show2.expr);
+        }
       }
 
       if (n.branch) { id = resolveBranch(n); continue; }
@@ -359,9 +408,7 @@
 
     $('dialogue').classList.toggle('narration', !n.who);
 
-    if (n.e && currentChar && currentChar.id === key) {
-      showChar(key, n.e);
-    }
+    applyChars(n, key === 'haram' || key === 'serin' ? key : null);
 
     if (n.text) {
       history.push({ who: n.who || '', text: n.text });
@@ -548,7 +595,7 @@
       flags: state.flags,
       chapter: state.chapter,
       bg: document.body.dataset.bg || 'ward_day',
-      char: currentChar,
+      chars: { main: chars.main, side: chars.side },
       history: history.slice(-60),
       ts: Date.now()
     };
@@ -574,10 +621,12 @@
     state.chapter = data.chapter || '';
     history = data.history || [];
     ended = false;
-    currentChar = null;
     hideChar(true);
     if (data.bg) setBg(data.bg);
-    if (data.char) showChar(data.char.id, data.char.expr);
+    if (data.chars) {
+      if (data.chars.main) setChar('main', data.chars.main.id, data.chars.main.expr);
+      if (data.chars.side) setChar('side', data.chars.side.id, data.chars.side.expr);
+    }
     updateHud();
     closeModal();
     var n = nodes[data.node];

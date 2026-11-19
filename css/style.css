@@ -67,21 +67,26 @@ body { overflow: hidden; }
   position: absolute;
   left: 50%;
   bottom: -2%;
-  transform: translateX(-50%) translateY(16px);
+  transform: translateX(-50%) translateY(14px);
   height: 96%;
   max-width: 98vw;
   object-fit: contain;
   object-position: bottom center;
   opacity: 0;
-  transition: opacity 0.42s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 0.32s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), filter 0.35s ease, left 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   filter: drop-shadow(0 22px 40px rgba(4, 18, 24, 0.5));
   pointer-events: none;
 }
 .char.on { opacity: 1; transform: translateX(-50%) translateY(0); }
+.char.dim { filter: drop-shadow(0 18px 32px rgba(4, 18, 24, 0.45)) brightness(0.82) saturate(0.88); }
 
-/* 세린은 전신 컷이라 같은 키에 맞추면 얼굴이 작아진다 → 확대해서 크롭 */
-.char[data-who="serin"] { height: 124%; bottom: -26%; }
-.char[data-who="serin"].on { transform: translateX(-50%) translateY(0); }
+/* 주역 · 조역 크기 (세린은 전신 컷이라 더 크게 잡는다) */
+.char--main[data-who="serin"] { height: 122%; bottom: -25%; }
+.char--side[data-who="haram"] { height: 78%; bottom: -1%; }
+.char--side[data-who="serin"] { height: 100%; bottom: -20%; }
+
+#char-layer.two .char--main { left: 34%; }
+#char-layer.two .char--side { left: 73%; }
 
 #stage.has-char .bg { transform: scale(1.05); }
 #stage.has-char .bg.on { transform: scale(1.02); }
@@ -733,7 +738,12 @@ body.is-ending #next-ind { opacity: 0 !important; transition: opacity 0.5s ease;
   .ui-layer { padding: 0 10px calc(10px + var(--safe-b)); gap: 17px; }
   #btn-load { display: none; }
   .char { height: 74%; bottom: 1%; }
-  .char[data-who="serin"] { height: 98%; bottom: -18%; }
+  .char--main[data-who="haram"] { height: 74%; bottom: 1%; }
+  .char--main[data-who="serin"] { height: 96%; bottom: -17%; }
+  .char--side[data-who="haram"] { height: 60%; bottom: 1%; }
+  .char--side[data-who="serin"] { height: 78%; bottom: -12%; }
+  #char-layer.two .char--main { left: 27%; }
+  #char-layer.two .char--side { left: 76%; }
   #dialogue { padding: 18px 17px 22px; border-radius: 15px; min-height: 108px; }
   #namebox { left: 14px; top: -14px; font-size: 12.5px; padding: 5px 15px; }
   #text { font-size: 15.5px; line-height: 1.84; min-height: 3.2em; }
@@ -755,8 +765,10 @@ body.is-ending #next-ind { opacity: 0 !important; transition: opacity 0.5s ease;
 }
 
 @media (max-height: 560px) {
-  .char { height: 86%; }
-  .char[data-who="serin"] { height: 112%; bottom: -22%; }
+  .char--main[data-who="haram"] { height: 86%; }
+  .char--main[data-who="serin"] { height: 110%; bottom: -22%; }
+  .char--side[data-who="haram"] { height: 70%; }
+  .char--side[data-who="serin"] { height: 90%; bottom: -18%; }
   #dialogue { min-height: 86px; padding: 14px 18px 16px; }
   #text { min-height: 2.5em; font-size: 15px; line-height: 1.7; }
   .title-inner h1 { font-size: clamp(25px, 6vw, 38px); }
