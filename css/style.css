@@ -583,6 +583,13 @@ body:not(.loading) .loader { opacity: 0; transition: opacity 0.6s; }
     radial-gradient(80% 70% at 50% 42%, rgba(16, 46, 52, 0.95), rgba(4, 14, 19, 0.99) 76%);
 }
 #ending-screen.on { opacity: 1; visibility: visible; }
+#ending-screen { background: radial-gradient(80% 70% at 50% 42%, rgba(12, 38, 44, 0.9), rgba(3, 11, 15, 0.985) 78%); }
+body.is-ending #dialogue,
+body.is-ending #topbar,
+body.is-ending #hud,
+body.is-ending #choices,
+body.is-ending #chapter-card,
+body.is-ending #next-ind { opacity: 0 !important; transition: opacity 0.5s ease; pointer-events: none; }
 
 .ending-inner { width: min(520px, 100%); text-align: center; }
 .ending-label { font-size: 10px; letter-spacing: 0.42em; color: #9fe6d7; }

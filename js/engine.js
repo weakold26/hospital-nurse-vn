@@ -164,6 +164,7 @@
 
   function showTitle() {
     ended = false;
+    document.body.classList.remove('is-ending');
     stopAuto();
     setSkip(false);
     document.body.classList.add('is-title');
@@ -176,6 +177,7 @@
 
   function startNew() {
     VNAudio.unlock();
+    document.body.classList.remove('is-ending');
     document.body.classList.remove('is-title');
     $('title-screen').classList.remove('on');
     $('ending-screen').classList.remove('on');
@@ -190,6 +192,7 @@
 
   function continueGame() {
     VNAudio.unlock();
+    document.body.classList.remove('is-ending');
     var raw = localStorage.getItem(KEY.auto);
     if (!raw) {
       var best = null, bestTs = 0;
@@ -706,6 +709,7 @@
 
   function showEnding(id) {
     ended = true;
+    document.body.classList.add('is-ending');
     stopAuto();
     setSkip(false);
     var e = meta.endings[id];

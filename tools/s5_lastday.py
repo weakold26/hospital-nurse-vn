@@ -37,7 +37,7 @@ def build(S):
     S.line(text="해가 완전히 졌다. 도시 불빛이 하늘 대신 아래에서 켜졌다.")
 
     S.line(text="마지막 인사를 어떻게 해야 할까. 이 5일 동안, 나는 무엇을 받았나.")
-    S.line(text="그 생각만 하다가, 하람 씨가 먼저 입을 열었다.")
+    S.line(show={"id": "haram", "expr": "base"}, text="그 생각만 하다가, 하람 씨가 먼저 입을 열었다.")
     S.line(who="정하람", e="base", text="선생님. 이제 내일부터 안 오시죠.")
     S.line(who="나", text="…네.")
     S.line(who="정하람", text="답을 하나만 들을게요. 이 5일, 어땠어요?")

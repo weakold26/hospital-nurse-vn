@@ -5,7 +5,7 @@
 def build(S):
     S.line(
         text="엘리베이터가 3층에서 멈췄다.\n문이 열리자 소독약 냄새와, 어디선가 끓고 있는 죽 냄새가 한꺼번에 밀려왔다.",
-        bg="ward_day", ch="프롤로그 · 3층 병동", bgm="day", fx="dust")
+        bg="ward_day", ch="프롤로그 · 첫 아침", bgm="day", fx="dust")
     S.line(text="치과대학 4학년. 병동 실습 마지막 주.\n왼손에는 각이 접힌 실습 수첩, 가슴에는 아직 낯선 이름표.")
     S.line(text="구강악안면외과 3층.\n여기서 닷새를 지내면, 내 병원 실습은 끝난다.")
     S.line(who="나", e=None, text="……늦진 않았지.")
