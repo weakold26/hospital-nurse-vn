@@ -741,9 +741,9 @@ body.is-ending #next-ind { opacity: 0 !important; transition: opacity 0.5s ease;
   .char--main[data-who="haram"] { height: 74%; bottom: 1%; }
   .char--main[data-who="serin"] { height: 96%; bottom: -17%; }
   .char--side[data-who="haram"] { height: 60%; bottom: 1%; }
-  .char--side[data-who="serin"] { height: 78%; bottom: -12%; }
-  #char-layer.two .char--main { left: 27%; }
-  #char-layer.two .char--side { left: 76%; }
+  .char--side[data-who="serin"] { height: 72%; bottom: -10%; }
+  #char-layer.two .char--main { left: 26%; }
+  #char-layer.two .char--side { left: 71%; }
   #dialogue { padding: 18px 17px 22px; border-radius: 15px; min-height: 108px; }
   #namebox { left: 14px; top: -14px; font-size: 12.5px; padding: 5px 15px; }
   #text { font-size: 15.5px; line-height: 1.84; min-height: 3.2em; }

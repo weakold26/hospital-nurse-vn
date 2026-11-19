@@ -413,6 +413,7 @@
     if (n.text) {
       history.push({ who: n.who || '', text: n.text });
       if (history.length > 500) history.shift();
+      autosave();
     }
 
     typeText(n.text || '', function () {
