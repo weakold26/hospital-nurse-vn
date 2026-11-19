@@ -688,7 +688,7 @@
       (settings.sound ? ' on' : '') + '" data-sound="on">켜짐</button><button class="seg-btn' +
       (!settings.sound ? ' on' : '') + '" data-sound="off">꺼짐</button></div></div>';
     html += '<p class="muted small">진행은 자동으로 저장됩니다. 선택지에서 멈추고, 엔딩까지 갈 수 있어요.</p>';
-    html += '<div class="row"><button class="mini ghost" data-act="title">타이틀로 돌아가기</button></div>';
+    html += '<div class="row"><button class="mini ghost" data-act="load">불러오기</button><button class="mini ghost" data-act="title">타이틀로 돌아가기</button></div>';
     $('modal-title').textContent = '설정';
     $('modal-body').innerHTML = html;
     $('modal').classList.add('on');
@@ -835,6 +835,9 @@
         $('modal').classList.remove('on');
         autosave();
         showTitle();
+      } else if (t.dataset.act === 'load') {
+        $('modal').classList.remove('on');
+        openSave('load');
       }
     });
 

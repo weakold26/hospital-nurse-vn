@@ -723,7 +723,8 @@ body:not(.loading) .loader { opacity: 0; transition: opacity 0.6s; }
 
 /* ---------- mobile ---------- */
 @media (max-width: 720px) {
-  .ui-layer { padding: 0 10px calc(10px + var(--safe-b)); gap: 8px; }
+  .ui-layer { padding: 0 10px calc(10px + var(--safe-b)); gap: 17px; }
+  #btn-load { display: none; }
   .char { height: 74%; bottom: 1%; }
   .char[data-who="serin"] { height: 98%; bottom: -18%; }
   #dialogue { padding: 18px 17px 22px; border-radius: 15px; min-height: 108px; }
@@ -732,10 +733,10 @@ body:not(.loading) .loader { opacity: 0; transition: opacity 0.6s; }
   #next-ind { right: 13px; bottom: 8px; }
   .choice { min-height: 50px; padding: 12px 14px; font-size: 14.5px; border-radius: 12px; }
   #choices { max-width: 100%; }
-  .icon { min-width: 34px; height: 26px; font-size: 10px; padding: 0 6px; }
-  #topbar { gap: 4px; right: 10px; max-width: 74vw; }
+  .icon { min-width: 32px; height: 25px; font-size: 9.5px; padding: 0 5px; }
+  #topbar { gap: 3px; right: 9px; max-width: 58vw; }
   #hud { gap: 5px; left: 10px; }
-  #chapter-chip { font-size: 9.5px; padding: 4px 10px; letter-spacing: 0.02em; max-width: 46vw; overflow: hidden; text-overflow: ellipsis; }
+  #chapter-chip { font-size: 9.5px; padding: 4px 10px; letter-spacing: 0.02em; max-width: 38vw; overflow: hidden; text-overflow: ellipsis; }
   .aff { font-size: 9.5px; gap: 5px; }
   .aff .nm { width: 22px; font-size: 9.5px; }
   .aff .bar { width: 40px; height: 4px; }
