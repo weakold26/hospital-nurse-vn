@@ -67,7 +67,7 @@
         }
         preload().then(function () {
           document.body.classList.remove('loading');
-          readyTitle();
+          showTitle();
         });
       })
       .catch(function (e) {
